@@ -41,6 +41,52 @@ public class LinkedList {
         return count;
     }
 
+    /**
+     *   TC : O(n)
+     */
+    public static ListNode insertAtK(ListNode head , int data ,int k){
+
+         if(head ==null && k!=0){  // head==null, k=0  new ListNode(data)
+             return head ;
+         }
+         //if k is the valid index
+        if(k<0 || k>length(head)){
+            return head ;
+        }
+
+        ListNode newNode = new ListNode(data);
+
+        if(k==0){  // I need add the new node at head
+            newNode.setNext(head);
+            head = newNode; // head is pointing to the new node now
+        }else{
+            int count = 0;
+            ListNode temp = head ;
+            while(count < k-1){
+                temp= temp.getNext();
+                count++;
+            }
+            //temp will represent one node before the target node
+
+            newNode.setNext(temp.getNext());
+            temp.setNext(newNode);
+        }
+       return head ;
+
+    }
+
+
+    /**
+     * Assignment
+     *
+     */
+    public static ListNode delete(ListNode head , int k){
+        /**
+         * code to delete the node at the kth index ( index starts from 0 );
+         */
+    }
+
+
     public static void main(String[] args) {
         /**
          *   1 ->2 ->3 ->4 ->null
