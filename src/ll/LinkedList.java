@@ -84,6 +84,88 @@ public class LinkedList {
         /**
          * code to delete the node at the kth index ( index starts from 0 );
          */
+        return null ;
+    }
+
+
+    public boolean isPresent(ListNode head , int data){
+        if(head ==null){
+            return false ;
+        }
+
+        while(head!=null){
+            if(head.getData() == data){
+                return true;
+            }
+            head = head.getNext();
+        }
+        return false ;
+    }
+
+    public boolean isPresentRec(ListNode head, int data){
+        //BC
+        if(head ==null){
+            return false ;
+        }
+
+      return   head.getData() == data || isPresentRec(head.getNext(), data) ;
+
+    }
+
+
+    public ListNode findMid(ListNode head){
+        if(head ==null){
+            return head ;
+        }
+
+        int length = length(head);  // 1 traversal
+
+        int count =0 ;
+        ListNode temp = head;
+        while( count<length/2){   // Second traversal
+             temp = temp.getNext();
+             count++;
+        }
+        return temp ;
+    }
+
+
+    public ListNode findMidNode(ListNode head){
+
+        if(head ==null || head.getNext()==null){
+            return head ;
+        }
+
+        ListNode slow = head;
+        ListNode fast  = head ;
+
+        while(fast!=null && fast.getNext()!=null){
+            slow = slow.getNext();
+            fast = fast.getNext().getNext();
+        }
+
+        //slow will be at the middle
+        return slow ;
+    }
+
+
+    public boolean hasLoop(ListNode head){
+        if(head ==null || head.getNext()==null){
+            return false ;
+
+        }
+        ListNode slow = head ;
+        ListNode fast = head ;
+        while(fast!=null && fast.getNext()!=null){
+            fast = fast.getNext().getNext();
+            slow = slow.getNext();
+
+            if(fast ==slow){
+                return true ;
+            }
+        }
+
+        return false ;
     }
 
 
