@@ -5,6 +5,33 @@ import java.util.List;
 public class LinkedList {
 
 
+
+
+    public static ListNode delete(ListNode head , int k){
+
+        if(head == null || k<0 || k>= length(head)){
+            return head ;
+        }
+        if(k==0){
+            head = head.getNext();
+        }else{
+            ListNode temp = head;
+            int index = 0;
+            while(index<k-1){
+                temp = temp.getNext();
+                index++;
+            }
+
+            ListNode next = temp.getNext().getNext();
+            temp.getNext().setNext(null);
+            temp.setNext(next);
+        }
+        return head ;
+
+    }
+
+
+
     public static void traverse(ListNode head){
         if(head==null){
             return;
@@ -80,12 +107,7 @@ public class LinkedList {
      * Assignment
      *
      */
-    public static ListNode delete(ListNode head , int k){
-        /**
-         * code to delete the node at the kth index ( index starts from 0 );
-         */
-        return null ;
-    }
+
 
 
     public boolean isPresent(ListNode head , int data){
@@ -168,6 +190,52 @@ public class LinkedList {
         return false ;
     }
 
+    public static ListNode startOfTheLoop(ListNode head){
+
+        if(head==null || head.getNext()==null){
+            return null ;
+        }
+
+        //Confirm if it has loop
+        ListNode slow = head ;
+        ListNode fast = head ;
+
+        boolean hasLoop = false ;
+
+        while(fast !=null && fast.getNext()!=null){
+            fast = fast.getNext().getNext();
+            slow = slow.getNext();
+
+            if(fast == slow){
+                hasLoop = true;
+                break;
+            }
+        }
+
+        if(!hasLoop){
+            System.out.println("Loop doesn't exist");
+            return null ;
+        }
+
+        //Find the start of the loop
+
+        slow = head ;
+        //fast is at the point of meeting
+
+        /**
+         * Now I need to move both fast and slow one step at a time
+         * Point at which they meet, start of the loop
+         */
+
+        while(slow.getData()!=fast.getData()){
+            slow = slow.getNext();
+            fast = fast.getNext();
+        }
+
+        return slow ; // this is the start of the loop
+
+    }
+
 
     public static void main(String[] args) {
         /**
@@ -187,10 +255,9 @@ public class LinkedList {
         //node1 is the head here
 
         traverse(node1);
+        ListNode newHead = delete(node1 , 2 );
 
-        traverse(node1);
-
-        System.out.println(length(node3));
+        traverse(newHead);
 
     }
 }
