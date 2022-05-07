@@ -90,8 +90,8 @@ public class DoublyLinkedList {
          int left = 0;
          int right = length(head)-1;
          while(left <right){
-             int t = head.getData();
-             head.setData(tail.getData());
+             int t = temp.getData();
+             temp.setData(tail.getData());
              tail.setData(t);
              temp = temp.getNext();
              tail = tail.getPrev();
@@ -123,7 +123,8 @@ public class DoublyLinkedList {
         node3.setNext(node4); node4.setPrev(node3);
 
         traverse(head);
+        DLLNode newHead = reverse(head);
         System.out.println();
-        System.out.println(length(head));
+        traverse(newHead);
     }
 }
