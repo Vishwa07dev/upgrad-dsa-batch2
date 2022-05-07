@@ -78,6 +78,36 @@ public class DoublyLinkedList {
         return  head;
     }
 
+    public static  DLLNode reverse(DLLNode head){
+
+         if(head ==null || head.getNext()==null){
+             return head ;
+         }
+
+         DLLNode tail = findTail(head);
+
+         DLLNode temp = head ;
+         int left = 0;
+         int right = length(head)-1;
+         while(left <right){
+             int t = head.getData();
+             head.setData(tail.getData());
+             tail.setData(t);
+             temp = temp.getNext();
+             tail = tail.getPrev();
+             left++;
+             right--;
+         }
+         return head ;
+    }
+
+    private static DLLNode findTail(DLLNode head) {
+
+        while(head.getNext()!=null){
+            head= head.getNext();
+        }
+        return head ;
+    }
 
 
     public static void main(String[] args) {
