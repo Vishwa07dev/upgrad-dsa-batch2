@@ -33,6 +33,20 @@ public class May7_2022 {
         return head1;
     }
 
+    /**
+     *COME WITH THE ANSWER
+     */
+    public ListNode reverseInTheBlockOfK(ListNode head, int k){
+
+        /**
+         * Logic to complete this problem
+         */
+
+        return null ;
+
+
+    }
+
     public static void main(String[] args) {
 
         ListNode node1 = new ListNode(1);
