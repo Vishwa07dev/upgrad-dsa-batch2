@@ -1,5 +1,7 @@
 package sorting;
 
+import ll.ListNode;
+
 import java.util.Arrays;
 
 public class May13 {
@@ -45,6 +47,25 @@ public class May13 {
             arr[min] = temp;
         }
 
+    }
+
+
+    public ListNode removeDuplicate(ListNode head){
+
+        ListNode current = head;
+
+        while(current !=null){
+
+            ListNode temp = current;
+
+            while(temp!=null && temp.getData() == temp.getNext().getData()){
+                temp.setNext(temp.getNext().getNext());
+            }
+
+            current.setNext(temp);
+            current = current.getNext();
+        }
+        return head ;
     }
 
     public static void main(String[] args) {
