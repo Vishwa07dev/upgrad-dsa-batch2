@@ -97,11 +97,40 @@ public class May14 {
     }
 
 
+    public static void printUnsortedIndexes1(int[] arr) {
+        boolean flag1 = true, flag2 = true;
+        int start = 0, end = 0;
+        int j = 0, k = 0;
+        for (int i = 0; i < arr.length; i++) {
+
+            for (j = i; j < arr.length; j++) {
+                if (arr[i] > arr[j] && flag1) {
+                    System.out.println(arr[i] + " at " + i);
+                    flag1 = false;
+                    break;
+                }
+            }
+        }
+        for (int i = arr.length - 1; i >= 0; i--) {
+
+            for (k = i; k >= 0; k--) {
+                if (arr[i] < arr[k] && flag2) {
+                    System.out.println(arr[i] + " at " + i);
+                    flag2 = false;
+                    break;
+                }
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
 
         int[] arr = {10,12,20,30,25,40,32,31,35,50,60};
 
         printUnsortedIndexes(arr);
+
+        printUnsortedIndexes1(arr);
 
     }
 
