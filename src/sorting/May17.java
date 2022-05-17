@@ -25,6 +25,32 @@ public class May17 {
     }
 
 
+    public void arrange(int[] arr){
+        int i=0;
+        int j= arr.length-1;
+
+        while(i<j){
+            while(arr[i]==0){
+                i++;
+            }
+
+            // i will represent 1
+
+            while(arr[j]==1){
+                j--;
+            }
+            //j will represent 0
+
+            if(i<j){
+                //swap i and j
+                int temp = arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+            }
+        }
+    }
+
+
     public boolean canBeSorted(int[] arr , boolean[] b){
 
         for(int i = arr.length-1;i>=0;i--){
