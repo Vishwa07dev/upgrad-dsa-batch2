@@ -111,6 +111,9 @@ public class May14 {
                 }
             }
         }
+
+
+        // You will the first element which is lesser than any left element
         for (int i = arr.length - 1; i >= 0; i--) {
 
             for (k = i; k >= 0; k--) {
