@@ -16,18 +16,34 @@ public class May23 {
                 swap(arr,p,i);
             }
         }
-
-        /**
-         * Now elements till pth index is smaller than pivot
-         *
-         * Elements from p+1th index is more then pivot
-         *
-         * So pivot element correct index will be p+1
-         */
         p++;
         swap(arr,p,end);
 
         return p;
+    }
+
+    /**
+     *
+     * quickSort(arr, 0, 5) -> sort the elements from 0 to 5 index
+     *
+     *
+     * quickSort(arr, 3, 5) ->sort the elements from 3 to 5 index
+     */
+    public void quickSort(int[] arr, int start , int end){
+
+       //Base condition
+        if(start >= end){
+            return ;
+        }
+
+        int pi = pivotIndex(arr,start, end);
+
+        /**
+         * everything to the left of pi will be smaller
+         * and everything to the right of pi will be bigger
+         */
+        quickSort(arr,start,pi-1);
+        quickSort(arr,pi+1,end);
     }
 
     private static void swap(int[] arr, int p, int i) {
