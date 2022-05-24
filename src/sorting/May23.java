@@ -1,8 +1,30 @@
 package sorting;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class May23 {
+
+
+    /**
+     * Nuts and Bolts problem
+     *
+     *
+     *  1. Array of Nuts
+     *  2. Array of Bolts
+     *
+     *
+     *  Corresponding to each nuts, there is only 1 bolt. 1 to 1 mapping between nuts and bolts
+     *
+     *
+     *  char[] nuts = { @ , # , $ , %, ^ , &}
+     *  char[] bolts = {$ , %, & , ^ , @ , #}
+     *
+     *  We need to match the nuts with bolts
+     *
+     *  nuts = { @ , # , $ , %, ^ , & }
+     *  bolts = { @ , # , $ , %, ^ , & }
+     */
 
 
     /**
@@ -55,6 +77,32 @@ public class May23 {
         return p;
     }
 
+    public static int pivotIndexRandomized(int[] arr , int start, int end){
+
+        Random random = new Random(); // Class in Java which can be used to generate random elements
+
+        int pivotIndex = random.nextInt(end-start)+start; // [ start , end ] randomly
+
+        //Swap it with the last index
+
+        swap(arr, pivotIndex, end);
+
+        //Continue the same logic
+        int pivot = arr[end]; // last element has been choosen as the pivot
+        int p = start-1; //initial value of pivot index
+
+        for(int i=start;i<end;i++){
+            if(arr[i]<pivot){
+                p++;
+                swap(arr,p,i);
+            }
+        }
+        p++;
+        swap(arr,p,end);
+
+        return p;
+    }
+
     /**
      *
      * quickSort(arr, 0, 5) -> sort the elements from 0 to 5 index
@@ -62,14 +110,14 @@ public class May23 {
      *
      * quickSort(arr, 3, 5) ->sort the elements from 3 to 5 index
      */
-    public void quickSort(int[] arr, int start , int end){
+    public static void quickSort(int[] arr, int start , int end){
 
        //Base condition
         if(start >= end){
             return ;
         }
 
-        int pi = pivotIndex(arr,start, end);
+        int pi = pivotIndexRandomized(arr,start, end);
 
         quickSort(arr,start,pi-1);
         quickSort(arr,pi+1,end);
@@ -94,7 +142,8 @@ public class May23 {
     public static void main(String[] args) {
         int[] arr = {3,5,2,1,9,4};
         System.out.println(Arrays.toString(arr));
-        System.out.println(pivotIndex(arr,0, arr.length-1));
+        //System.out.println(pivotIndex(arr,0, arr.length-1));
+        quickSort(arr, 0, arr.length-1);
         System.out.println(Arrays.toString(arr));
 
 
