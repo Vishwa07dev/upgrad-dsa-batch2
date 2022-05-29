@@ -17,14 +17,18 @@ public class May23 {
      *  Corresponding to each nuts, there is only 1 bolt. 1 to 1 mapping between nuts and bolts
      *
      *
-     *  char[] nuts = { @ , # , $ , %, ^ , &}
-     *  char[] bolts = {$ , %, & , ^ , @ , #}
+     *  char[] nuts = { @ , # , $ , %, ^ , &}  O(nlogn)
+     *  char[] bolts = {$ , %, & , ^ , @ , #} O(nlogn)
      *
      *  We need to match the nuts with bolts
      *
-     *  nuts = { @ , # , $ , %, ^ , & }
-     *  bolts = { @ , # , $ , %, ^ , & }
+     *  nuts = { #, @ , $ , %, ^ , & }
+     *  bolts = { # , @ , $ , %, ^ , & }
      */
+
+    public static void matchNutsWithBolts(char[] bolts, char[] nuts , int start, int end){
+
+    }
 
 
     /**
