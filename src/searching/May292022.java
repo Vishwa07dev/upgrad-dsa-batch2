@@ -9,32 +9,30 @@ public class May292022 {
      *
      */
      public static void findFrequency(int[] arr){
-         //Bring all the elements in the range of [0, arr.length-1]
-
          for(int i=0;i<arr.length;i++){
              arr[i]=arr[i]-1;
          }
-
-         /**
-          * Transformation of the array
-          */
          for(int i=0;i<arr.length;i++){
              arr[arr[i]%arr.length] = arr[arr[i]%arr.length]+arr.length;
          }
-
-         /**
-          * I need to find the frequency array
-          */
          for(int i=0;i<arr.length;i++){
              arr[i]=arr[i]/arr.length;
          }
-
          System.out.println(Arrays.toString(arr));
-
          for (int i=0 ;i<arr.length;i++){
              System.out.println((i+1) +" -> "+arr[i]);
          }
 
+     }
+
+
+     public static int findOddAppearingElement(int[] arr){
+         int result = arr[0];
+
+         for(int i=1;i<arr.length;i++){
+             result= result^arr[i];
+         }
+         return result;
      }
 
 
