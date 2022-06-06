@@ -1,5 +1,9 @@
 package stacks;
 
+import ll.ListNode;
+
+import javax.swing.*;
+
 public class June42022 {
 }
 
@@ -63,5 +67,45 @@ class StackUsingArray {
         return arr[this.top]; // just returning the value
     }
 
+
+}
+
+class StackUsingLL {
+
+    private ListNode head ;
+
+    public boolean isEmpty(){
+        return this.head ==null;
+    }
+
+    public void push(int data){
+        ListNode newNode = new ListNode(data);
+        newNode.setNext(head);
+        head = newNode;
+    }
+
+    public int pop(){
+
+        if(isEmpty()){
+            throw new RuntimeException("Stack underflow exception");
+        }
+        /**
+         * PUSH and POP both should happen from the head
+         */
+        int data = head.getData();
+        head = head.getNext();
+        return data ;
+    }
+
+    /**
+     * This will just return the last element added
+     */
+    public int top(){
+        if(isEmpty()){
+            throw new RuntimeException("Stack underflow exception");
+        }
+
+        return head.getData();
+    }
 
 }
