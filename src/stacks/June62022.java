@@ -20,6 +20,11 @@ public class June62022 {
         reverseStack(s);
 
         System.out.println(s); // [15,11,3,5]
+
+
+
+        char[] arr = { '(', '[','{','}',']',')'};
+        System.out.println(isBalanced(arr));
     }
 
 
@@ -45,5 +50,46 @@ public class June62022 {
         int element = s.pop();
         insertAtTheBotton(s, data);
         s.push(element);
+    }
+
+    public static boolean isBalanced(char[] ac) {
+
+        Stack<Character> s = new Stack();
+
+        for (int i = 0; i < ac.length; i++) {
+            if (ac[i] == '{' || ac[i] == '(' || ac[i] == '[') {
+                s.push(ac[i]);
+
+            } else if (ac[i] == '}' || ac[i] == ')' || ac[i] == ']') {
+
+                /**
+                 * Check if it's matching with the previous bracket
+                 * and also this is not the first bracket
+                 */
+                if(s.isEmpty()){
+                    return false ;
+                }
+
+                if(!isMatching(s.peek(), ac[i])){
+                    return false;
+                }
+                s.pop();
+
+            }
+        }
+        if (s.size() > 0) {
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean isMatching(Character open, char close) {
+        if ((open =='(' && close==')') ||
+                (open =='{' && close=='}') ||
+                (open =='[' && close==']')){
+            return true;
+        }else{
+            return false ;
+        }
     }
 }
