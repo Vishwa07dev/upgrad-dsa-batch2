@@ -2,6 +2,8 @@ package queue;
 
 import ll.ListNode;
 
+import javax.swing.*;
+
 public class June72022 {
 }
 
@@ -60,22 +62,35 @@ class QueueUsingArray {
     }
 }
 
+
+
+
 class QueueUsingLinkedList {
 
     private ListNode frontNode ; // enQueue
     private ListNode rearNode ;  //deQueue
 
     public boolean isEmpty(){
-        //Implement this
-        return false ;
+        return frontNode==null && rearNode==null;
     }
 
     public void enQueue(int data){
-
+        //It should happen at frontNode
+        if(isEmpty()){
+            frontNode = new ListNode(data);
+            rearNode = frontNode;
+        }else{
+            frontNode.setNext(new ListNode(data));
+            frontNode= frontNode.getNext();
+        }
     }
 
     public int deQueue(){
-        return -1;
-        //Implement this method
+        if(isEmpty()){
+            throw new RuntimeException("Queue underflow exception");
+        }
+        int data = rearNode.getData();
+        rearNode = rearNode.getNext();
+        return data;
     }
 }
