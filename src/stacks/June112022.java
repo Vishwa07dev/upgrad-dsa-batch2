@@ -17,6 +17,7 @@ public class June112022 {
         Stack<Double> stack = new Stack<>();
 
         for(int i=exp.length()-1;i>=0;i--){
+            // for(int i=0;i<exp.length;i++)
 
             char c = exp.charAt(i);
 
