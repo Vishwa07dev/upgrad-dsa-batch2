@@ -31,26 +31,11 @@ public class June132022 {
         int days = 0;
         int rotNum = 2;
         while(true){
-            /**
-             * Keep checking for the fresh mangoes to be rotten, till will
-             * not find any
-             */
             boolean anyMangoWasRotten = false;
-            /**
-             * I should have the logic to rot the mangoes
-             */
             for(int i=0;i<mangoes.length;i++){
                 for(int j=0;j<mangoes[0].length;j++){
 
                     if(mangoes[i][j]==rotNum){
-                        /**
-                         * i,j index mango is rotten
-                         */
-
-                        /**
-                         * If there is any fresh mango in the neighbour
-                         * it should spoil it
-                         */
                         // top
                         if(i-1>=0 && mangoes[i-1][j] == 1){
                             mangoes[i-1][j]=rotNum+1;
